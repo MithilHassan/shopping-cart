@@ -30,19 +30,19 @@
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
                     <button
-                      onclick="decrease('phone-number')"
+                      onclick="updateCart(false,'phone')"
                       class="btn btn-default"
                     >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
-                      id="phone-number"
+                      id="phone-quantity"
                       type="text"
                       class="form-control text-center"
                       value="1"
                     />
                     <button
-                      onclick="increase('phone-number')"
+                      onclick="updateCart(true, 'phone')"
                       class="btn btn-default"
                     >
                       <i class="fas fa-plus"></i>
@@ -63,19 +63,19 @@
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
                     <button
-                      onclick="decrease('case-number')"
+                      onclick="updateCart(false,'case')"
                       class="btn btn-default"
                     >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
                       type="text"
-                      id="case-number"
+                      id="case-quantity"
                       class="form-control text-center"
                       value="1"
                     />
                     <button
-                      onclick="increase('case-number')"
+                      onclick="updateCart(true, 'case')"
                       class="btn btn-default"
                     >
                       <i class="fas fa-plus"></i>
@@ -96,9 +96,9 @@
                 </div>
 
                 <div class="col-md-4 status">
-                  <h5>$ <span id="subtotal">1278</span></h5>
+                  <h5>$ <span id="subTotal">1278</span></h5>
                   <h5>$ <span id="tax">127.8</span></h5>
-                  <h5>$ <span id="total">1278</span></h5>
+                  <h5>$ <span id="grandTotal">1278</span></h5>
                 </div>
               </div>
             </div>

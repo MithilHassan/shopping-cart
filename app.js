@@ -1,36 +1,38 @@
-function increase(id) {
-  updateNumber(true, id);
-}
-function decrease(id) {
-  updateNumber(false, id);
-}
-function updateNumber(isIncrease, id) {
-  const previousNumber = parseFloat(document.getElementById(id).value);
-  const subtotal = parseFloat(document.getElementById("subtotal").innerText);
-  let newNumber;
-  let newSubtotal;
-  if (isIncrease) {
-    newNumber = previousNumber + 1;
-    if (id === "phone-number") {
-      newSubtotal = subtotal + 1219;
-    } else {
-      newSubtotal = subtotal + 59;
-    }
+function updateCart(isIncrease, product) {
+  const productQuantity = getInputValue(product + "-quantity");
+  let newQuantity;
+
+  if (isIncrease == true) {
+    newQuantity = productQuantity + 1;
   } else {
-    newNumber = previousNumber - 1;
-    if (id === "phone-number") {
-      newSubtotal = subtotal - 1219;
-    } else {
-      newSubtotal = subtotal - 59;
-    }
+    newQuantity = productQuantity - 1;
   }
-  document.getElementById(id).value = newNumber;
-  if (id === "phone-number") {
-    document.getElementById("phone-price").innerText = newNumber * 1219;
+
+  document.getElementById(product + "-quantity").value = newQuantity;
+
+  if (product === "phone") {
+    document.getElementById("phone-price").innerText = newQuantity * 1219;
   } else {
-    document.getElementById("case-price").innerText = newNumber * 59;
+    document.getElementById("case-price").innerText = newQuantity * 59;
   }
-  document.getElementById("subtotal").innerText = newSubtotal;
-  document.getElementById("tax").innerText = newSubtotal / 10;
-  document.getElementById("total").innerText = newSubtotal + newSubtotal / 10;
+
+  calculateTotal();
+}
+
+function calculateTotal() {
+  const phoneQuantity = getInputValue("phone-quantity");
+  const caseQuantity = getInputValue("case-quantity");
+  const subTotal = phoneQuantity * 1219 + caseQuantity * 59;
+  const tax = subTotal / 10;
+  const grandTotal = subTotal + tax;
+
+  document.getElementById("subTotal").innerText = subTotal;
+  document.getElementById("tax").innerText = tax;
+  document.getElementById("grandTotal").innerText = grandTotal;
+}
+
+function getInputValue(id) {
+  const input = document.getElementById(id);
+  const value = parseFloat(input.value);
+  return value;
 }
